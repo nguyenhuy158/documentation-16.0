@@ -1,0 +1,30 @@
+# create docker compose file have ubuntu and python version 3.8
+version: '3.8'
+
+services:
+  ubuntu:
+    image: ubuntu:latest
+    container_name: ubuntu
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+    command: /bin/bash
+    networks:
+      - mynetwork
+
+  python:
+    image: python:3.8
+    container_name: python
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+    command: /bin/bash
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+    
